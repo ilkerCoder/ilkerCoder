@@ -1,0 +1,18 @@
+// COLORS
+$base-color : #000000;
+$fg-color : #BDD6DB;
+$accent : #E60073;
+$pop : #00BFE6;
+$grey : #8FA0A3;
+$grey-fade : #1F2223;
+
+// FONTS
+
+$font-primary: "Blank River", sans-serif;
+
+@font-face {
+  font-family: "Blank River";
+  src: url("/fonts/Blank River.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
