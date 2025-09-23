@@ -1,13 +1,12 @@
 // COLORS
 $base-color : #000000;
 $fg-color : #BDD6DB;
-$accent : #E60073;
-$pop : #00BFE6;
+$accent-color : #E60073;
+$pop-color : #00BFE6;
 $grey : #8FA0A3;
 $grey-fade : #1F2223;
 
 // FONTS
-
 $font-primary: "Blank River", sans-serif;
 
 @font-face {
@@ -15,4 +14,35 @@ $font-primary: "Blank River", sans-serif;
   src: url("/fonts/Blank River.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+
+// LİNKS
+.link {
+    color: $fg-color;
+    text-decoration: underline;
+    &:hover {
+        color : $pop-color
+    }
+}
+
+// Buttons
+ .custom-btn {
+  background: $fg-color;
+  color: $base-color;
+  cursor: pointer;
+  border: none;
+  margin: 0;
+  padding: .4ch .5em;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    content: "";
+    background-color: $accent-color;
+    z-index: -1;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    transform: rotate(0);}
 }

@@ -1,0 +1,49 @@
+@use "../../style/variables.scss" as *;
+polygon {
+  cursor: pointer;
+  fill: $pop-color; // ilk hali
+  transition: fill 0.3s ease;
+}
+polygon:hover {
+  animation: hoverColors 1s ease-in-out forwards;
+  animation-delay: 1s; 
+}
+polygon.animate {
+  animation: hoverColors 1s ease-in-out forwards;
+}
+@keyframes hoverColors {
+  0% {
+    fill: $pop-color;
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  33% {
+    fill: $accent-color;
+    filter: hue-rotate(60deg) brightness(1.2);
+  }
+  66% {
+    fill: $fg-color;
+    filter: hue-rotate(120deg) brightness(1.1);
+  }
+  100% {
+    fill: $pop-color; 
+    filter: hue-rotate(180deg) brightness(1);
+    
+  }
+}
+
+.svg-container  {
+  width: 40%  !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  svg {
+  transform: scaleX(-1); 
+  border-radius: 50%;       
+  overflow: hidden;         
+  }
+
+  &:hover { 
+    transform: scale(1.1);
+  }
+  transition: all 0.4s ease-in-out;
+} 
