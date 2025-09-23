@@ -2,6 +2,7 @@ import { Header } from "./components/header/header";
 import { Avatar } from "./components/avatar/avatar";
 import { SocialMedia } from "./components/social-media/social-media";
 import { UnderConstruction } from "./components/under-construction/under-construction";
+import Typed from "typed.js";
 
 // Avatar polygon animation
 document.querySelectorAll("polygon").forEach((poly) => {
@@ -49,7 +50,25 @@ function setupNavigation() {
           <div class="intro-line">I do artsy stuff.</div>
           <div class="intro-line">I blog sometimes.</div>
         </div>
+
+        <div class="vertical-text" id="vertical-typewriter"></div>
       `;
+
+      // Start Typed.js animation
+      setTimeout(() => {
+        const verticalElement = document.getElementById("vertical-typewriter");
+        if (verticalElement) {
+          new Typed(verticalElement, {
+            strings: ["SOFTWARE ENGINEER"],
+            typeSpeed: 200,
+            startDelay: 0,
+            showCursor: window.innerWidth > 480,
+            cursorChar: "|",
+            fadeOut: false,
+            loop: false,
+          });
+        }
+      }, 100);
     }
   }
 
@@ -60,5 +79,21 @@ function setupNavigation() {
   }
 }
 
-// Setup navigation when DOM is loaded
-document.addEventListener("DOMContentLoaded", setupNavigation);
+document.addEventListener("DOMContentLoaded", () => {
+  setupNavigation();
+
+  setTimeout(() => {
+    const verticalElement = document.getElementById("vertical-typewriter");
+    if (verticalElement) {
+      new Typed(verticalElement, {
+        strings: ["SOFTWARE ENGINEER"],
+        typeSpeed: 120,
+        startDelay: 0,
+        showCursor: window.innerWidth > 480,
+        cursorChar: "|",
+        fadeOut: false,
+        loop: false,
+      });
+    }
+  }, 250);
+});

@@ -43,7 +43,7 @@ export class Header extends HTMLElement {
       </a>
     </li>
   </ul>
-</nav>
+</nav> 
 
 </header>`;
   }
