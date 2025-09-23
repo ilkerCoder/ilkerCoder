@@ -222,16 +222,24 @@ body {
   }
 
   @media (max-width: 768px) {
-    position: fixed;
-    right: 1rem;
-    top: 29%;
-    margin-top: 0;
-    font-size: 1.1rem;
+    position: static;
+    writing-mode: initial;
+    text-orientation: initial;
+    transform: none;
+    right: auto;
+    top: auto;
+    margin-top: 2rem;
+    font-size: 1.4rem;
     z-index: 100;
+    text-align: center;
   }
 
   @media (max-width: 480px) {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+
+    &.show-cursor::after {
+      display: none !important;
+    }
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
