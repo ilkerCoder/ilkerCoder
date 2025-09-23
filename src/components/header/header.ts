@@ -5,7 +5,7 @@ export class Header extends HTMLElement {
     this.innerHTML = `<header class="main-header is--container">
 
   <a href="/" class="main-header__title is--fancyfont">
-    <h1 class="main-header__h1 is--nomargin">Test</h1>
+    <h1 class="main-header__h1 is--nomargin">Mustafa Ilker Kamis</h1>
   </a>
 
 <nav class="main-navigation">

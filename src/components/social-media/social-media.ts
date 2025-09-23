@@ -5,18 +5,13 @@ export class SocialMedia extends HTMLElement {
          <nav class="social">
       <ul>
         <li>
-          <a href="https://github.com/MDJAmin">Github <i class="fa fa-github"></i></a>
+          <a href="https://github.com/ilkerCoder">Github <i class="fa-brands fa-github"></i></a>
         </li>
         <li>
-          <a href="https://www.youtube.com/c/DARKLORDCDL "
-            >Youtube <i class="fa fa-youtube"></i
-          ></a>
+          <a href="https://www.linkedin.com/in/mustafa-ilker-kami%C5%9F-268b551bb/">Linkedin<i class="fa-brands fa-linkedin"></i></a>
         </li>
         <li>
-          <a href="https://dribbble.com/MDJAmin">Dribbble <i class="fa fa-dribbble"></i></a>
-        </li>
-        <li>
-          <a href="https://www.behance.net/MDJAminn">Behance <i class="fa fa-behance"></i></a>
+          <a href="https://www.instagram.com/xpetra_ichor/">Instagram <i class="fa-brands fa-instagram"></i></a>
         </li>
       </ul>
     </nav>
