@@ -2,7 +2,6 @@ import { Header } from "./components/header/header";
 import { Avatar } from "./components/avatar/avatar";
 import { SocialMedia } from "./components/social-media/social-media";
 import { UnderConstruction } from "./components/under-construction/under-construction";
-import Typed from "typed.js";
 
 // Avatar polygon animation
 document.querySelectorAll("polygon").forEach((poly) => {
@@ -51,22 +50,14 @@ function setupNavigation() {
           <div class="intro-line">I blog sometimes.</div>
         </div>
 
-        <div class="vertical-text" id="vertical-typewriter"></div>
+        <div class="vertical-text" id="vertical-typewriter" data-typetext="SOFTWARE ENGINEER"></div>
       `;
 
-      // Start Typed.js animation
+      // Start custom typewriter animation
       setTimeout(() => {
         const verticalElement = document.getElementById("vertical-typewriter");
         if (verticalElement) {
-          new Typed(verticalElement, {
-            strings: ["SOFTWARE ENGINEER"],
-            typeSpeed: 200,
-            startDelay: 0,
-            showCursor: window.innerWidth > 480,
-            cursorChar: "|",
-            fadeOut: false,
-            loop: false,
-          });
+          startTypewriter(verticalElement);
         }
       }, 100);
     }
@@ -79,21 +70,46 @@ function setupNavigation() {
   }
 }
 
+function startTypewriter(element: HTMLElement) {
+  const text = element.dataset.typetext || "";
+  let counter = -1;
+  let isTyping = true;
+  element.innerHTML = "";
+
+  // Cursor’u aktif et
+  element.classList.add("show-cursor");
+
+  const typeInterval = setInterval(() => {
+    if (isTyping) {
+      if (counter < text.length - 1) {
+        counter++;
+        element.innerHTML += text.charAt(counter);
+      } else {
+        // Yazma bittiğinde cursor yine kalsın ama yazı silinsin
+        isTyping = false;
+        setTimeout(() => {
+          const deleteInterval = setInterval(() => {
+            if (element.innerHTML.length > 0) {
+              element.innerHTML = element.innerHTML.slice(0, -1);
+            } else {
+              clearInterval(deleteInterval);
+              counter = -1;
+              isTyping = true;
+            }
+          }, 50);
+        }, 1500);
+      }
+    }
+  }, 120);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
 
   setTimeout(() => {
     const verticalElement = document.getElementById("vertical-typewriter");
     if (verticalElement) {
-      new Typed(verticalElement, {
-        strings: ["SOFTWARE ENGINEER"],
-        typeSpeed: 120,
-        startDelay: 0,
-        showCursor: window.innerWidth > 480,
-        cursorChar: "|",
-        fadeOut: false,
-        loop: false,
-      });
+      startTypewriter(verticalElement);
     }
   }, 250);
 });

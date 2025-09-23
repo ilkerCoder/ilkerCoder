@@ -178,12 +178,12 @@ body {
 // VERTICAL TEXT
 .vertical-text {
   position: absolute;
-  right: -2rem;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
+  writing-mode: sideways-lr;
+  text-orientation: upright;
+  right: 4rem;
   transform-origin: center;
   font-family: $font-primary;
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   font-weight: 600;
   color: rgba($fg-color, 0.7);
   letter-spacing: 0.3em;
@@ -191,12 +191,14 @@ body {
   white-space: nowrap;
   pointer-events: none;
   z-index: 5;
-  overflow: hidden;
 
-  // Typed.js styling
-  .typed-cursor {
-    color: $accent-color !important;
+  &.show-cursor::after {
+    content: "|";
+    color: $accent-color;
     font-weight: 300;
+    animation: blink 1s infinite;
+    position: relative;
+    bottom: 0%;
   }
 
   &::before {
@@ -222,27 +224,28 @@ body {
   @media (max-width: 768px) {
     position: fixed;
     right: 1rem;
-    top: 50%;
+    top: 29%;
     margin-top: 0;
     font-size: 1.1rem;
     z-index: 100;
-
-    &::before,
-    &::after {
-      display: none;
-    }
   }
 
   @media (max-width: 480px) {
-    right: -5.5rem;
-    font-size: 1rem;
-    .typed-cursor {
-      display: none !important;
-    }
+    font-size: 1.4rem;
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
     right: -1rem;
     font-size: 1.2rem;
+  }
+}
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
   }
 }
