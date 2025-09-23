@@ -191,6 +191,7 @@ body {
   white-space: nowrap;
   pointer-events: none;
   z-index: 5;
+  transform: rotate(90deg);
 
   &.show-cursor::after {
     content: "|";
@@ -228,6 +229,9 @@ body {
     margin-top: 0;
     font-size: 1.1rem;
     z-index: 100;
+    transform: rotate(90deg);
+    writing-mode: initial;
+    text-orientation: initial;
   }
 
   @media (max-width: 480px) {
