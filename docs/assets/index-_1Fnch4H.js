@@ -587,7 +587,7 @@
             </div>
           </div>
 
-          <a class="back-btn" href="/">
+          <a class="back-btn" href="/ilkerCoder/">
             <i class="fas fa-arrow-left"></i>
             <span>Geri Dön</span>
           </a>
