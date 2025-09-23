@@ -2,15 +2,14 @@
 a { color: inherit; } 
 
 .main-header {
-  text-decoration: none !important;
-
-  
-
+  text-decoration: none !important; 
   background: transparent;
+  margin-top: 15px;
+
   color: $fg-color;
   &__title {
     h1 {
-      font-size: 1.8rem;
+      font-size: clamp(3rem, 8vw, 5rem);
       margin: 0;
       text-decoration: none !important;
     }
@@ -27,7 +26,7 @@ a { color: inherit; }
 
   &__link {
     text-decoration: none;
-    font-size: 1rem;
+    font-size: clamp(2rem, 3vw,2.4rem);
     color: $fg-color;
     transition: color 0.2s;
     position: relative;

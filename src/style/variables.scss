@@ -5,9 +5,15 @@ $accent-color : #E60073;
 $pop-color : #00BFE6;
 $grey : #8FA0A3;
 $grey-fade : #1F2223;
-
+    
 // FONTS
 $font-primary: "Blank River", sans-serif;
+
+// FONT SIZES
+$base-font-size: 1rem;
+$title-font-size: 4rem;
+$nav-font-size: 1.5rem;
+$greeting-font-size: 1.25rem;
 
 @font-face {
   font-family: "Blank River";
