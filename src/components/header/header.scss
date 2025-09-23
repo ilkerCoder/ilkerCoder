@@ -83,7 +83,7 @@ a {
         }
       }
 
-      &:hover {
+      &:hover, &:active, &.touched {
         color: $accent-color;
 
         svg {

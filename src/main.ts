@@ -5,7 +5,21 @@ import { UnderConstruction } from "./components/under-construction/under-constru
 
 // Avatar polygon animation
 document.querySelectorAll("polygon").forEach((poly) => {
+  // Desktop hover
   poly.addEventListener("mouseenter", () => {
+    poly.classList.add("animate");
+
+    poly.addEventListener(
+      "animationend",
+      () => {
+        poly.classList.remove("animate");
+      },
+      { once: true }
+    );
+  });
+
+  // Mobile touch
+  poly.addEventListener("touchstart", () => {
     poly.classList.add("animate");
 
     poly.addEventListener(
@@ -105,6 +119,7 @@ function startTypewriter(element: HTMLElement) {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
+  setupMobileTouch();
 
   setTimeout(() => {
     const verticalElement = document.getElementById("vertical-typewriter");
@@ -113,3 +128,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 250);
 });
+
+// Mobile touch support for navigation links
+function setupMobileTouch() {
+  const navLinks = document.querySelectorAll(".main-navigation__link");
+
+  navLinks.forEach((link) => {
+    link.addEventListener("touchstart", () => {
+      link.classList.add("touched");
+    });
+
+    link.addEventListener("touchend", () => {
+      setTimeout(() => {
+        link.classList.remove("touched");
+      }, 300);
+    });
+  });
+}
