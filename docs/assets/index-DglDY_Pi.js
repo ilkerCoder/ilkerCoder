@@ -1,6 +1,6 @@
 (function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))n(o);new MutationObserver(o=>{for(const t of o)if(t.type==="childList")for(const i of t.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&n(i)}).observe(document,{childList:!0,subtree:!0});function e(o){const t={};return o.integrity&&(t.integrity=o.integrity),o.referrerPolicy&&(t.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?t.credentials="include":o.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function n(o){if(o.ep)return;o.ep=!0;const t=e(o);fetch(o.href,t)}})();class y extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="main-header is--container">
 
-  <a href="/" class="main-header__title is--fancyfont">
+  <a href="/ilkerCoder/ class="main-header__title is--fancyfont">
     <h1 class="main-header__h1 is--nomargin">Mustafa Ilker Kamis</h1>
   </a>
 
@@ -587,12 +587,13 @@
             </div>
           </div>
 
-          <a class="back-btn" href="/ilkerCoder/">
-            <i class="fas fa-arrow-left"></i>
-            <span>Geri Dön</span>
-          </a>
         </div>
       </div>
+
+      <a class="back-btn" href="/ilkerCoder/">
+        <i class="fas fa-arrow-left"></i>
+        <span>Geri Dön</span>
+      </a>
     `}}customElements.define("under-construction",g);document.querySelectorAll("polygon").forEach(l=>{l.addEventListener("mouseenter",()=>{l.classList.add("animate"),l.addEventListener("animationend",()=>{l.classList.remove("animate")},{once:!0})}),l.addEventListener("touchstart",()=>{l.classList.add("animate"),l.addEventListener("animationend",()=>{l.classList.remove("animate")},{once:!0})})});function k(){const l=document.querySelector(".main-content");document.querySelectorAll(".main-navigation__link").forEach(o=>{o.addEventListener("click",t=>{t.preventDefault(),o.getAttribute("href")==="/"?e():n()})});function e(){l&&(l.innerHTML=`
         <div id="avatar-sec">
           <me-avatar></me-avatar>

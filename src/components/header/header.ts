@@ -4,7 +4,7 @@ export class Header extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `<header class="main-header is--container">
 
-  <a href="/" class="main-header__title is--fancyfont">
+  <a href="/ilkerCoder/ class="main-header__title is--fancyfont">
     <h1 class="main-header__h1 is--nomargin">Mustafa Ilker Kamis</h1>
   </a>
 
