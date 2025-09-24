@@ -83,8 +83,8 @@ body {
     opacity: 0;
     transform: translateX(-30px);
     animation: slideInLeft 0.8s ease-out forwards;
-    color: rgb(223, 33, 131);
-    text-shadow: rgb(29, 195, 228) 1.68763px 1.68763px 0px;
+    // color: rgb(223, 33, 131);
+    // text-shadow: rgb(29, 195, 228) 1.68763px 1.68763px 0px;
 
     &:nth-child(1) {
       animation-delay: 0.2s;

@@ -42,7 +42,7 @@ function setupNavigation() {
 
       const href = link.getAttribute("href");
 
-      if (href === "/") {
+      if (href === "/" || href === "/about") {
         showHomePage();
       } else {
         showUnderConstruction();

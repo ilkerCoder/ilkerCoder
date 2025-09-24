@@ -1,13 +1,13 @@
-(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))n(o);new MutationObserver(o=>{for(const t of o)if(t.type==="childList")for(const i of t.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&n(i)}).observe(document,{childList:!0,subtree:!0});function e(o){const t={};return o.integrity&&(t.integrity=o.integrity),o.referrerPolicy&&(t.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?t.credentials="include":o.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function n(o){if(o.ep)return;o.ep=!0;const t=e(o);fetch(o.href,t)}})();class y extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="main-header is--container">
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))s(o);new MutationObserver(o=>{for(const t of o)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&s(n)}).observe(document,{childList:!0,subtree:!0});function i(o){const t={};return o.integrity&&(t.integrity=o.integrity),o.referrerPolicy&&(t.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?t.credentials="include":o.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(o){if(o.ep)return;o.ep=!0;const t=i(o);fetch(o.href,t)}})();class y extends HTMLElement{updateActiveNavigation(){this.querySelectorAll(".main-navigation__link").forEach(t=>{t.classList.remove("main-navigation__link--active")});const i=document.querySelector(".main-content"),s=i?.querySelector("under-construction");if(i?.querySelector("#avatar-sec")&&!s){const t=this.querySelector('.main-navigation__link[data-path="/about"]');t&&t.classList.add("main-navigation__link--active")}else if(s){const t=sessionStorage.getItem("lastClickedPath");if(t){const n=this.querySelector(`.main-navigation__link[data-path="${t}"]`);n&&n.classList.add("main-navigation__link--active")}}}connectedCallback(){this.innerHTML=`<header class="main-header is--container">
 
-  <a href="/ilkerCoder/ class="main-header__title is--fancyfont">
+  <a href="#" class="main-header__title is--fancyfont">
     <h1 class="main-header__h1 is--nomargin">Mustafa Ilker Kamis</h1>
   </a>
 
 <nav class="main-navigation">
   <ul class="main-navigation__list is--nolist is--nomargin">
     <li class="main-navigation__entry">
-      <a href="/about" class="main-navigation__link main-navigation__link">
+      <a href="/about" class="main-navigation__link" data-path="/about">
         About
         <svg width="50" viewBox="0 0 173.5 30.9" xmlns="http://www.w3.org/2000/svg">
           <path d="M173 5c-1-4-6-3-7-3l-5 2-15 3-7-2c-5-3-12-5-19-4-8 1-13 6-17 9l-6 4-7-5c-4-3-8-7-15-8-13-3-20 3-24 8-2 2-3 3-5 3-3 0-5-1-8-3-4-3-9-7-17-8S6 3 2 10c-1 2-4 7-1 10 2 3 5 3 6 3 3 0 5-2 6-4l1-1 1-1c2-2 3-4 8-1l4 2c5 4 13 9 20 10 9 0 13-5 16-8 2-3 3-4 7-3s7 3 9 6c4 3 8 8 16 8l7-1c10-2 13-7 16-11 3-3 3-4 10-1 18 7 25 3 34-3l6-3c3-1 7-3 5-7Z" fill="currentColor"></path>
@@ -15,7 +15,7 @@
       </a>
     </li>
     <li class="main-navigation__entry">
-      <a href="/blog/" class="main-navigation__link">
+      <a href="/blog/" class="main-navigation__link" data-path="/blog">
         Blog
         <svg width="50" viewBox="0 0 173.5 30.9" xmlns="http://www.w3.org/2000/svg">
           <path d="M173 5c-1-4-6-3-7-3l-5 2-15 3-7-2c-5-3-12-5-19-4-8 1-13 6-17 9l-6 4-7-5c-4-3-8-7-15-8-13-3-20 3-24 8-2 2-3 3-5 3-3 0-5-1-8-3-4-3-9-7-17-8S6 3 2 10c-1 2-4 7-1 10 2 3 5 3 6 3 3 0 5-2 6-4l1-1 1-1c2-2 3-4 8-1l4 2c5 4 13 9 20 10 9 0 13-5 16-8 2-3 3-4 7-3s7 3 9 6c4 3 8 8 16 8l7-1c10-2 13-7 16-11 3-3 3-4 10-1 18 7 25 3 34-3l6-3c3-1 7-3 5-7Z" fill="currentColor"></path>
@@ -23,7 +23,7 @@
       </a>
     </li>
     <li class="main-navigation__entry">
-      <a href="/demo/" class="main-navigation__link">
+      <a href="/demo/" class="main-navigation__link" data-path="/demo">
         Demo
         <svg width="50" viewBox="0 0 173.5 30.9" xmlns="http://www.w3.org/2000/svg">
           <path d="M173 5c-1-4-6-3-7-3l-5 2-15 3-7-2c-5-3-12-5-19-4-8 1-13 6-17 9l-6 4-7-5c-4-3-8-7-15-8-13-3-20 3-24 8-2 2-3 3-5 3-3 0-5-1-8-3-4-3-9-7-17-8S6 3 2 10c-1 2-4 7-1 10 2 3 5 3 6 3 3 0 5-2 6-4l1-1 1-1c2-2 3-4 8-1l4 2c5 4 13 9 20 10 9 0 13-5 16-8 2-3 3-4 7-3s7 3 9 6c4 3 8 8 16 8l7-1c10-2 13-7 16-11 3-3 3-4 10-1 18 7 25 3 34-3l6-3c3-1 7-3 5-7Z" fill="currentColor"></path>
@@ -31,7 +31,7 @@
       </a>
     </li>
     <li class="main-navigation__entry">
-      <a href="/art/" class="main-navigation__link">
+      <a href="/art/" class="main-navigation__link" data-path="/art">
         Art
         <svg width="50" viewBox="0 0 173.5 30.9" xmlns="http://www.w3.org/2000/svg">
           <path d="M173 5c-1-4-6-3-7-3l-5 2-15 3-7-2c-5-3-12-5-19-4-8 1-13 6-17 9l-6 4-7-5c-4-3-8-7-15-8-13-3-20 3-24 8-2 2-3 3-5 3-3 0-5-1-8-3-4-3-9-7-17-8S6 3 2 10c-1 2-4 7-1 10 2 3 5 3 6 3 3 0 5-2 6-4l1-1 1-1c2-2 3-4 8-1l4 2c5 4 13 9 20 10 9 0 13-5 16-8 2-3 3-4 7-3s7 3 9 6c4 3 8 8 16 8l7-1c10-2 13-7 16-11 3-3 3-4 10-1 18 7 25 3 34-3l6-3c3-1 7-3 5-7Z" fill="currentColor"></path>
@@ -39,9 +39,9 @@
       </a>
     </li>
   </ul>
-</nav> 
+</nav>
 
-</header>`}}customElements.define("me-header",y);class r extends HTMLElement{connectedCallback(){this.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 620 620" enable-background="new 0 0 620 620"         xml:space="preserve"><g><polygon points="311,303 288,292 301,316" style="fill:#564031;stroke:#564031;"/>
+</header>`,this.updateActiveNavigation(),this.querySelectorAll(".main-navigation__link").forEach(s=>{s.addEventListener("click",o=>{const t=s.getAttribute("data-path");t&&(sessionStorage.setItem("lastClickedPath",t),setTimeout(()=>{this.updateActiveNavigation()},100))})});const i=document.querySelector(".main-content");i&&new MutationObserver(()=>{this.updateActiveNavigation()}).observe(i,{childList:!0,subtree:!0})}}customElements.define("me-header",y);class r extends HTMLElement{connectedCallback(){this.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 620 620" enable-background="new 0 0 620 620"         xml:space="preserve"><g><polygon points="311,303 288,292 301,316" style="fill:#564031;stroke:#564031;"/>
         <polygon points="288,292 285,312 301,316" style="fill:#4F392D;stroke:#4F392D;"/>
         <polygon points="311,303 317,287 288,292" style="fill:#4D392B;stroke:#4D392B;"/>
         <polygon points="317,287 305,270 288,292" style="fill:#473529;stroke:#473529;"/>
@@ -522,7 +522,7 @@
         <polygon points="620,8 620,0 588,0" style="fill:#FBFBF9;stroke:#FBFBF9;"/>
         <polygon points="572,620 620,620 620,579" style="fill:#2D3332;stroke:#2D3332;"/>
                 </g>
-                             </svg>`}}customElements.define("me-avatar",r);class f extends HTMLElement{connectedCallback(){this.innerHTML=`
+                             </svg>`}}customElements.define("me-avatar",r);class g extends HTMLElement{connectedCallback(){this.innerHTML=`
          <nav class="social">
       <ul>
         <li>
@@ -536,7 +536,7 @@
         </li>
       </ul>
     </nav>
-        `}}customElements.define("me-social",f);class g extends HTMLElement{connectedCallback(){this.innerHTML=`
+        `}}customElements.define("me-social",g);class f extends HTMLElement{connectedCallback(){this.innerHTML=`
       <div class="construction-container">
         <div class="construction-content">
           <div class="glitch-text" data-text="UNDER CONSTRUCTION">
@@ -594,7 +594,7 @@
         <i class="fas fa-arrow-left"></i>
         <span>Geri Dön</span>
       </a>
-    `}}customElements.define("under-construction",g);document.querySelectorAll("polygon").forEach(l=>{l.addEventListener("mouseenter",()=>{l.classList.add("animate"),l.addEventListener("animationend",()=>{l.classList.remove("animate")},{once:!0})}),l.addEventListener("touchstart",()=>{l.classList.add("animate"),l.addEventListener("animationend",()=>{l.classList.remove("animate")},{once:!0})})});function k(){const l=document.querySelector(".main-content");document.querySelectorAll(".main-navigation__link").forEach(o=>{o.addEventListener("click",t=>{t.preventDefault(),o.getAttribute("href")==="/"?e():n()})});function e(){l&&(l.innerHTML=`
+    `}}customElements.define("under-construction",f);document.querySelectorAll("polygon").forEach(l=>{l.addEventListener("mouseenter",()=>{l.classList.add("animate"),l.addEventListener("animationend",()=>{l.classList.remove("animate")},{once:!0})}),l.addEventListener("touchstart",()=>{l.classList.add("animate"),l.addEventListener("animationend",()=>{l.classList.remove("animate")},{once:!0})})});function k(){const l=document.querySelector(".main-content");document.querySelectorAll(".main-navigation__link").forEach(o=>{o.addEventListener("click",t=>{t.preventDefault();const n=o.getAttribute("href");n==="/"||n==="/about"?i():s()})});function i(){l&&(l.innerHTML=`
         <div id="avatar-sec">
           <me-avatar></me-avatar>
           <h2 class="presentation__greeting">Hello!</h2>
@@ -607,4 +607,4 @@
         </div>
 
         <div class="vertical-text" id="vertical-typewriter" data-typetext="SOFTWARE ENGINEER"></div>
-      `,setTimeout(()=>{const o=document.getElementById("vertical-typewriter");o&&p(o)},100))}function n(){l&&(l.innerHTML="<under-construction></under-construction>")}}function p(l){const s=l.dataset.typetext||"";let e=-1,n=!0;l.innerHTML="",l.classList.add("show-cursor"),setInterval(()=>{n&&(e<s.length-1?(e++,l.innerHTML+=s.charAt(e)):(n=!1,setTimeout(()=>{const o=setInterval(()=>{l.innerHTML.length>0?l.innerHTML=l.innerHTML.slice(0,-1):(clearInterval(o),e=-1,n=!0)},50)},1500)))},120)}document.addEventListener("DOMContentLoaded",()=>{k(),a(),setTimeout(()=>{const l=document.getElementById("vertical-typewriter");l&&p(l)},250)});function a(){document.querySelectorAll(".main-navigation__link").forEach(s=>{s.addEventListener("touchstart",()=>{s.classList.add("touched")}),s.addEventListener("touchend",()=>{setTimeout(()=>{s.classList.remove("touched")},300)})})}
+      `,setTimeout(()=>{const o=document.getElementById("vertical-typewriter");o&&p(o)},100))}function s(){l&&(l.innerHTML="<under-construction></under-construction>")}}function p(l){const e=l.dataset.typetext||"";let i=-1,s=!0;l.innerHTML="",l.classList.add("show-cursor"),setInterval(()=>{s&&(i<e.length-1?(i++,l.innerHTML+=e.charAt(i)):(s=!1,setTimeout(()=>{const o=setInterval(()=>{l.innerHTML.length>0?l.innerHTML=l.innerHTML.slice(0,-1):(clearInterval(o),i=-1,s=!0)},50)},1500)))},120)}document.addEventListener("DOMContentLoaded",()=>{k(),a(),setTimeout(()=>{const l=document.getElementById("vertical-typewriter");l&&p(l)},250)});function a(){document.querySelectorAll(".main-navigation__link").forEach(e=>{e.addEventListener("touchstart",()=>{e.classList.add("touched")}),e.addEventListener("touchend",()=>{setTimeout(()=>{e.classList.remove("touched")},300)})})}
