@@ -2,10 +2,12 @@ import { Header } from "./components/header/header";
 import { Avatar } from "./components/avatar/avatar";
 import { SocialMedia } from "./components/social-media/social-media";
 import { UnderConstruction } from "./components/under-construction/under-construction";
+import {startAvatarAnimation} from "./scripts/scripts";
 
-// Avatar polygon animation
+startAvatarAnimation();
+
+
 document.querySelectorAll("polygon").forEach((poly) => {
-  // Desktop hover
   poly.addEventListener("mouseenter", () => {
     poly.classList.add("animate");
 

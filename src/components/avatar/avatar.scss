@@ -4,9 +4,8 @@ polygon {
   fill: $pop-color; // ilk hali
   transition: fill 0.3s ease;
 }
-polygon:hover {
+polygon:hover , polygon.force-hover {
   animation: hoverColors 1s ease-in-out forwards;
-  animation-delay: 1s; 
 }
 polygon.animate {
   animation: hoverColors 1s ease-in-out forwards;
