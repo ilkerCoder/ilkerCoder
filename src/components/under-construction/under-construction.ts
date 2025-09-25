@@ -11,7 +11,6 @@ export class UnderConstruction extends HTMLElement {
 
           <div class="construction-message">
             <p class="main-text">Bu sayfa henüz yapım aşamasında...</p>
-            <p class="sub-text">üşenmezsem yapacağım 🤖</p>
             <p class="tech-text">// TODO: Implement this page when motivation.level > 0</p>
           </div>
 

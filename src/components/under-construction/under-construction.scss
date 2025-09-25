@@ -91,13 +91,6 @@
     font-family: $font-primary;
   }
 
-  .sub-text {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    color: rgb(223, 33, 131);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-  }
-
   .tech-text {
     font-family: "Courier New", monospace;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
