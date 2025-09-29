@@ -6,6 +6,57 @@ import {startAvatarAnimation} from "./scripts/scripts";
 
 startAvatarAnimation();
 
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+    emailjs: any;
+  }
+}
+
+function initializeTracking() {
+  (window as any).emailjs.init("L1pFLZ9Jno3iyme1o");
+
+  trackVisitor();
+}
+
+async function trackVisitor() {
+  try {
+    const visitorData = {
+      url: window.location.href,
+      referrer: document.referrer || 'Direct',
+      userAgent: navigator.userAgent,
+      timestamp: new Date().toISOString(),
+      language: navigator.language,
+      screenResolution: `${screen.width}x${screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    };
+
+    window.gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      custom_parameter_1: visitorData.referrer
+    });
+
+    await (window as any).emailjs.send('service_ne7ebjj', 'template_domiowi', {
+      to_email: 'bnilker@gmail.com',
+      visitor_url: visitorData.url,
+      visitor_referrer: visitorData.referrer,
+      visitor_agent: visitorData.userAgent,
+      visit_time: visitorData.timestamp,
+      visitor_language: visitorData.language,
+      screen_resolution: visitorData.screenResolution,
+      timezone: visitorData.timezone
+    });
+
+  } catch (error) {
+    console.error('Tracking hatası:', error);
+  }
+}
+
+window.addEventListener('load', () => {
+  initializeTracking();
+});
+
 
 document.querySelectorAll("polygon").forEach((poly) => {
   poly.addEventListener("mouseenter", () => {
