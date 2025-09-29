@@ -13,6 +13,47 @@ declare global {
   }
 }
 
+async function getLocationData() {
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return {};
+  }
+}
+
+function shouldTrackVisitor(ip: string): boolean {
+  const now = Date.now();
+  const HOURS_24 = 24 * 60 * 60 * 1000;
+
+  const lastTrackTime = localStorage.getItem('lastTrackingTime');
+  if (lastTrackTime && (now - parseInt(lastTrackTime)) < HOURS_24) {
+    console.log('Bu tarayıcıdan 24 saat içinde ziyaret kaydedilmiş');
+    return false;
+  }
+
+  const trackedIPs = JSON.parse(localStorage.getItem('trackedIPs') || '{}');
+  if (trackedIPs[ip] && (now - trackedIPs[ip]) < HOURS_24) {
+    console.log('Bu IP adresi 24 saat içinde kaydedilmiş');
+    return false;
+  }
+
+  localStorage.setItem('lastTrackingTime', now.toString());
+  trackedIPs[ip] = now;
+  localStorage.setItem('trackedIPs', JSON.stringify(trackedIPs));
+
+  const DAYS_7 = 7 * 24 * 60 * 60 * 1000;
+  Object.keys(trackedIPs).forEach(ipAddr => {
+    if (now - trackedIPs[ipAddr] > DAYS_7) {
+      delete trackedIPs[ipAddr];
+    }
+  });
+  localStorage.setItem('trackedIPs', JSON.stringify(trackedIPs));
+
+  return true;
+}
+
 function initializeTracking() {
   (window as any).emailjs.init("L1pFLZ9Jno3iyme1o");
 
@@ -21,6 +62,12 @@ function initializeTracking() {
 
 async function trackVisitor() {
   try {
+    const locationData = await getLocationData();
+
+    if (!shouldTrackVisitor(locationData.ip || 'unknown')) {
+      return;
+    }
+
     const visitorData = {
       url: window.location.href,
       referrer: document.referrer || 'Direct',
@@ -28,7 +75,23 @@ async function trackVisitor() {
       timestamp: new Date().toISOString(),
       language: navigator.language,
       screenResolution: `${screen.width}x${screen.height}`,
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      platform: navigator.platform,
+      cookieEnabled: navigator.cookieEnabled,
+      onlineStatus: navigator.onLine,
+      cpuCores: (navigator as any).hardwareConcurrency || 'Unknown',
+      deviceMemory: (navigator as any).deviceMemory || 'Unknown',
+      connectionType: (navigator as any).connection?.effectiveType || 'Unknown',
+      networkSpeed: (navigator as any).connection?.downlink || 'Unknown',
+
+      // Location info's
+      country: locationData.country || 'Unknown',
+      city: locationData.city || 'Unknown',
+      region: locationData.region || 'Unknown',
+      latitude: locationData.latitude || 'Unknown',
+      longitude: locationData.longitude || 'Unknown',
+      ip: locationData.ip || 'Unknown',
+      isp: locationData.org || 'Unknown'
     };
 
     window.gtag('event', 'page_view', {
@@ -45,7 +108,19 @@ async function trackVisitor() {
       visit_time: visitorData.timestamp,
       visitor_language: visitorData.language,
       screen_resolution: visitorData.screenResolution,
-      timezone: visitorData.timezone
+      timezone: visitorData.timezone,
+      platform: visitorData.platform,
+      cpu_cores: visitorData.cpuCores,
+      device_memory: visitorData.deviceMemory,
+      connection_type: visitorData.connectionType,
+      network_speed: visitorData.networkSpeed,
+      country: visitorData.country,
+      city: visitorData.city,
+      region: visitorData.region,
+      latitude: visitorData.latitude,
+      longitude: visitorData.longitude,
+      ip_address: visitorData.ip,
+      isp_provider: visitorData.isp
     });
 
   } catch (error) {
@@ -71,7 +146,6 @@ document.querySelectorAll("polygon").forEach((poly) => {
     );
   });
 
-  // Mobile touch
   poly.addEventListener("touchstart", () => {
     poly.classList.add("animate");
 
@@ -120,7 +194,6 @@ function setupNavigation() {
         <div class="vertical-text" id="vertical-typewriter" data-typetext="SOFTWARE ENGINEER"></div>
       `;
 
-      // Start custom typewriter animation
       setTimeout(() => {
         const verticalElement = document.getElementById("vertical-typewriter");
         if (verticalElement) {
@@ -143,7 +216,6 @@ function startTypewriter(element: HTMLElement) {
   let isTyping = true;
   element.innerHTML = "";
 
-  // Cursor’u aktif et
   element.classList.add("show-cursor");
 
   const typeInterval = setInterval(() => {
@@ -152,7 +224,6 @@ function startTypewriter(element: HTMLElement) {
         counter++;
         element.innerHTML += text.charAt(counter);
       } else {
-        // Yazma bittiğinde cursor yine kalsın ama yazı silinsin
         isTyping = false;
         setTimeout(() => {
           const deleteInterval = setInterval(() => {
